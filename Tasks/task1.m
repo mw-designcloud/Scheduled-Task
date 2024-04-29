@@ -7,4 +7,5 @@ Tnew.time = datetime("now");
 Tnew.amount = double(string(Tnew.amount));
 Tnew.base = cellstr(Tnew.base);
 Tnew.currency = cellstr(Tnew.currency);
-T = [T;Tnew] % adding a row
+T = [T;Tnew]; % adding a row
+writetable(T,'Data/eth.csv')
