@@ -3,7 +3,9 @@ url = "https://www.mathworks.com/matlabcentral/cody/players?term=id%3A173294+OR+
 json = webread(url);
 tCurrentScores = struct2table(json);
 tNewLeaders = array2table(tCurrentScores.score');
+names = string(tCurrentScores.nickname');
+firstNames = regexprep(names," .*","");
 tNewLeaders.Properties.VariableNames = firstNames;
 tNewLeaders.time = datetime("now");
 tLeaderboard = [tLeaderboard; tNewLeaders];
-writetable(t2,'Data/cody_leaders.csv')
+writetable(tLeaderboard,'Data/cody_leaders.csv')
