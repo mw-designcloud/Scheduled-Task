@@ -29,10 +29,3 @@ jobs:
           git add .
           git commit -m "generated"
           git push
-
-      # Save the result as artifact
-      - name: Archive output data
-        uses: actions/upload-artifact@v4
-        with:
-          name: ethereum-price-history
-          path: Data/eth.csv
