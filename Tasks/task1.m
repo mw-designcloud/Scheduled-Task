@@ -1,11 +1,8 @@
-% Read input data
-T = readtable("Data/eth.csv");
-jason = webread("https://api.coinbase.com/v2/prices/ETH-USD/spot");
-Tnew = struct2table(jason.data);
-Tnew.time = datetime("now");
-%  Transform data to fit the input format
-Tnew.amount = double(string(Tnew.amount));
-Tnew.base = cellstr(Tnew.base);
-Tnew.currency = cellstr(Tnew.currency);
-T = [T;Tnew]; % adding a row
-writetable(T,'Data/eth.csv')
+tLeaderboard = readtable("Data/cody_leaders.csv");
+json = webread(url);
+tCurrentScores = struct2table(json);
+tNewLeaders = array2table(tCurrentScores.score');
+tNewLeaders.Properties.VariableNames = firstNames;
+tNewLeaders.time = datetime("now");
+tLeaderboard = [tLeaderboard; tNewLeaders];
+writetable(t2,'Data/cody_leaders.csv')
