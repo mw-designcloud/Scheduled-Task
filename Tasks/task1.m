@@ -46,9 +46,12 @@ function task1(option)
 
         % Print out this leaderboard plot once a week
         dtNow.Format = "eeee";
-        if string(dtNow)=="Monday"
-            plotLeaderboard(tLeaderboard, firstNames);
-        end
+        % if string(dtNow)=="Monday"
+        %     plotLeaderboard(tLeaderboard, firstNames);
+        % end
+
+        matlab.internal.liveeditor.executeAndSave('report.mlx')
+        export("report.mlx","report.md")
 
     end
 
